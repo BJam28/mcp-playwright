@@ -201,28 +201,28 @@ export class PressKeyTool extends BrowserToolBase {
 /**
  * Tool for switching browser tabs
  */
-// export class SwitchTabTool extends BrowserToolBase {
-//   /**
-//    * Switch the tab to the specified index
-//    */
-//   async execute(args: any, context: ToolContext): Promise<ToolResponse> {
-//     return this.safeExecute(context, async (page) => {
-//       const tabs = await browser.page;      
+export class SwitchTabTool extends BrowserToolBase {
+  /**
+    * Switch the tab to the specified index
+    */
+   async execute(args: any, context: ToolContext): Promise<ToolResponse> {
+     return this.safeExecute(context, async (page) => {
+       const tabs = await browser.page;      
 
-//       // Validate the tab index
-//       const tabIndex = Number(args.index);
-//       if (isNaN(tabIndex)) {
-//         return createErrorResponse(`Invalid tab index: ${args.index}. It must be a number.`);
-//       }
+       // Validate the tab index
+       const tabIndex = Number(args.index);
+       if (isNaN(tabIndex)) {
+         return createErrorResponse(`Invalid tab index: ${args.index}. It must be a number.`);
+       }
 
-//       if (tabIndex >= 0 && tabIndex < tabs.length) {
-//         await tabs[tabIndex].bringToFront();
-//         return createSuccessResponse(`Switched to tab with index ${tabIndex}`);
-//       } else {
-//         return createErrorResponse(
-//           `Tab index out of range: ${tabIndex}. Available tabs: 0 to ${tabs.length - 1}.`
-//         );
-//       }
-//     });
-//   }
-// }
+       if (tabIndex >= 0 && tabIndex < tabs.length) {
+         await tabs[tabIndex].bringToFront();
+         return createSuccessResponse(`Switched to tab with index ${tabIndex}`);
+       } else {
+         return createErrorResponse(
+           `Tab index out of range: ${tabIndex}. Available tabs: 0 to ${tabs.length - 1}.`
+         );
+       }
+     });
+   }
+ }
